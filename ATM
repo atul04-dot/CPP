@@ -1,0 +1,117 @@
+#include<iostream>
+using namespace std;
+class atm
+{
+protected:
+int addMoney, widMoney,deposite;
+string name;
+char type[10];
+long long accNumber;
+public:
+void setValue()
+{
+    cout<<"\tEnter your full name:-";
+   
+    getline(cin,name);
+    cout<<"\tEnter your 12 digit Account number:-";
+    cin>>accNumber;
+    cout<<"\tEnter your acconut type(saving/current):-";
+    cin>>type;
+    cout<<"\tHow much money do you want to add:-";
+    cin>>addMoney;
+}
+void userDetail()
+{
+    cout<<"\t\tName:-"<<name<<endl;
+    cout<<"\t\tAccount Number:"<<accNumber<<endl;
+    cout<<"\t\tAccount Type:-"<<type<<endl;
+    cout<<"\t\tAvilable Balance:"<<addMoney<<endl;
+}
+void showBal()
+{
+    cout<<"\tYour Account Balance is:-"<<addMoney<<endl;
+}
+void balDep()
+{
+    cout<<"\tHow much money you want to add:-";
+    cin>>deposite;
+    addMoney=addMoney+deposite;
+    cout<<"\tYour avilable balance is:-"<<addMoney<<endl;;
+
+}
+void withdraw()
+{
+    cout<<"\tHow much money do you to withdraw:";
+    cin>>widMoney;
+   
+    if (widMoney>addMoney)
+    {
+        cout<<"\tInsufficient balance. Enter correct amount..."<<endl;/* code */
+        free;
+    }
+    if (widMoney<=addMoney)
+    {
+         addMoney=addMoney-widMoney;
+        cout<<"\tProcessing.Please wait.....\n";/* code */
+        cout<<"Avilable Balance is:"<<addMoney<<endl;
+        free;
+    }
+    
+}
+};
+int main()
+{
+    atm a;
+    int c;    
+         cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+         cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+         cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+         cout<<"\t\t~~~~~~WELCOME TO SBI~~~~~~~~~~~~~~\n";
+         cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+         cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+         cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+         cout<<"\n\t--Open Account (Mandatory)--"<<endl;
+          a.setValue();
+        cout<<"\n\tYour Account Details are followns:"<<endl;
+        a.userDetail();
+        
+         while (1)
+    {   
+        cout<<"\n\tNow Enter your choice for more services:"<<endl;
+         cout<<"\t\t1. Balaence Enquery\n";
+         cout<<"\t\t2. Deposite money\n";
+         cout<<"\t\t3. Withdraw Money\n";
+         cout<<"\t\t4. Cancel"<<endl;
+         cin>>c;
+        switch (c)
+        {
+         case 1:
+            a.showBal();
+
+        break;
+
+        case 2:
+
+            a.balDep();
+
+        break;
+
+        case 3:
+
+            a.withdraw();
+            break;
+
+        case 4:
+            cout<<"\tThankyou for using our services.\n\tVisit again."<<endl;
+            exit(1);
+
+        break;  
+
+        default:
+            cout<<"\nInvalid choice\n";
+            break;
+        }
+    }
+   
+    return 0;
+}
